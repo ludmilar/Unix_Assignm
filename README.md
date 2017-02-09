@@ -47,7 +47,7 @@ In addition I also change name of I column in genotypes `sed 's/Sample_ID/SNP_ID
 
 # Join
 
-1. Combine 2 files into new one: `join snp_position_3.txt new_transposed_maize_genotypes.txt > maize_all_results.txt`
+1. Combine 2 files into new one: `join -t $'\t' -1 1 -2 1 snp_position_3.txt new_transposed_maize_genotypes.txt > maize_all_results.txt`
 2. `bioawk -c hdr '$Chromosome==2 {print $0}' maize_all_results.txt > maize_chr2.txt` 
 Hear I look for chr2 in column "chromosome" and return entire line.
 3. Sort in increase order:
