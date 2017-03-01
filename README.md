@@ -54,5 +54,7 @@ Hear I look for chr2 in column "chromosome" and return entire line.
 `sort -k3  teosinte_chr1.txt > teosinte_chr1_sortIN.txt`
 4. To replace "?/?" for "-/-" needed to run: `sed 's/?/-/g' teosinte_chr1_sortRev.txt >teosinte_chr1_sortRev_replaced.txt` 
 5. Put all files into new dir: `mkdir results-$(date +%F)` then `mv maize_chr?.txt results-2017-02-07`
+# loop to create file by chromozons:
 
+'for i in {1..10}; do awk '$2=='$i'' maize_genotypes_joined.txt | sed 's/?/-/g'| sort -k3,3n | tee maize_chr$i.txt | sed 's/-/?/g' | sort -k3,3nr > maize_chr"$i"_rev.txt; done'
 
